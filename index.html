@@ -1,16 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+<title>3DAS – 3D-Druck, Workshops &amp; Teambuilding in Bern</title>
+<meta name="description" content="3DAS druckt deine Serien, bringt 3D-Druck ins Klassenzimmer und macht ihn zum Teamerlebnis. Präzise, lokal und aus Bern.">
+<link rel="canonical" href="https://3das.ch/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="3DAS – 3D-Druck, Workshops &amp; Teambuilding in Bern">
+<meta property="og:description" content="3DAS druckt deine Serien, bringt 3D-Druck ins Klassenzimmer und macht ihn zum Teamerlebnis. Präzise, lokal und aus Bern.">
+<meta property="og:url" content="https://3das.ch/">
+<meta property="og:locale" content="de_CH">
+<meta property="og:image" content="https://3das.ch/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3DAS – 3D-Druck, Workshops &amp; Teambuilding in Bern">
+<meta name="twitter:description" content="3DAS druckt deine Serien, bringt 3D-Druck ins Klassenzimmer und macht ihn zum Teamerlebnis. Präzise, lokal und aus Bern.">
+<meta name="twitter:image" content="https://3das.ch/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "3DAS",
+  "url": "https://3das.ch/",
+  "image": "https://3das.ch/assets/logo.svg",
+  "description": "3D-Druck, Workshops und Team-Events aus Bern.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Muristrasse 21E",
+    "addressLocality": "Bern",
+    "postalCode": "3006",
+    "addressCountry": "CH"
+  },
+  "areaServed": "Bern"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -20,485 +53,158 @@
   input,textarea,select{font-family:inherit}
   ::selection{background:#f39209;color:#fff}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes layerGrow{from{transform:scaleX(0.2);opacity:.3}to{transform:scaleX(1);opacity:1}}
-  @keyframes softPulse{0%,100%{opacity:1}50%{opacity:.55}}
   @media(max-width:860px){#navlinks{display:none !important}#navbtn{display:inline-flex !important}}
+  #mobilemenu{display:none;flex-direction:column;gap:2px;border-top:1px solid #e3e8ec;padding:8px 32px 16px}
+  #mobilemenu.open{display:flex}
+  .nav-link:hover{color:#005c9f}
+  .btn-orange:hover{background:#d97f06}
+  .btn-blue:hover{background:#00456f}
+  .btn-outline:hover{border-color:#005c9f}
+  .card:hover{border-color:#005c9f;transform:translateY(-4px)}
+  .footer-link:hover{color:#f39209}
 </style>
-</helmet>
+</head>
+<body>
 
 <div style="min-height:100vh;display:flex;flex-direction:column">
 
   <!-- ============ NAV ============ -->
   <nav id="topnav" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e3e8ec">
     <div style="max-width:1200px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <a role="button" onClick="{{ goStart }}" style="display:flex;align-items:center;cursor:pointer">
-        <img src="assets/logo.svg" alt="3DAS" style="height:26px;width:auto;display:block">
+      <a href="./" style="display:flex;align-items:center">
+        <img src="assets/logo.svg" alt="3DAS" width="154" height="26" style="height:26px;width:auto;aspect-ratio:320/54.2;display:block">
       </a>
       <div id="navlinks" style="display:flex;align-items:center;gap:30px">
-        <a role="button" onClick="{{ goBatch }}" style="cursor:pointer;font-size:15px;font-weight:500;color:#3a4653" style-hover="color:#005c9f">Batch-Druck</a>
-        <a role="button" onClick="{{ goWorkshops }}" style="cursor:pointer;font-size:15px;font-weight:500;color:#3a4653" style-hover="color:#005c9f">Schulklassen</a>
-        <a role="button" onClick="{{ goTeam }}" style="cursor:pointer;font-size:15px;font-weight:500;color:#3a4653" style-hover="color:#005c9f">Teambuilding</a>
-        <a role="button" onClick="{{ goKontakt }}" style="display:inline-flex;align-items:center;gap:8px;background:#f39209;color:#fff;font-size:14px;font-weight:600;padding:11px 20px;border-radius:2px" style-hover="background:#d97f06">Kontakt</a>
+        <a href="batch-druck/" class="nav-link" style="font-size:15px;font-weight:500;color:#3a4653">Batch-Druck</a>
+        <a href="schulklassen/" class="nav-link" style="font-size:15px;font-weight:500;color:#3a4653">Schulklassen</a>
+        <a href="teambuilding/" class="nav-link" style="font-size:15px;font-weight:500;color:#3a4653">Teambuilding</a>
+        <a href="kontakt/" class="btn-orange" style="display:inline-flex;align-items:center;gap:8px;background:#f39209;color:#fff;font-size:14px;font-weight:600;padding:11px 20px;border-radius:2px">Kontakt</a>
       </div>
-      <button id="navbtn" onClick="{{ toggleMenu }}" style="display:none;align-items:center;gap:8px;background:#0f1720;color:#fff;border:none;font-size:14px;font-weight:600;padding:10px 16px;border-radius:2px">Menü</button>
+      <button id="navbtn" aria-label="Menü" aria-expanded="false" aria-controls="mobilemenu" style="display:none;align-items:center;gap:8px;background:#0f1720;color:#fff;border:none;font-size:14px;font-weight:600;padding:10px 16px;border-radius:2px">Menü</button>
     </div>
-    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-      <div style="border-top:1px solid #e3e8ec;padding:8px 32px 16px;display:flex;flex-direction:column;gap:2px">
-        <a role="button" onClick="{{ goBatch }}" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Batch-Druck</a>
-        <a role="button" onClick="{{ goWorkshops }}" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Schulklassen</a>
-        <a role="button" onClick="{{ goTeam }}" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Teambuilding</a>
-        <a role="button" onClick="{{ goKontakt }}" style="margin-top:10px;text-align:center;background:#f39209;color:#fff;font-weight:600;padding:12px;border-radius:2px">Kontakt aufnehmen</a>
-      </div>
-    </sc-if>
+    <div id="mobilemenu">
+      <a href="batch-druck/" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Batch-Druck</a>
+      <a href="schulklassen/" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Schulklassen</a>
+      <a href="teambuilding/" style="padding:12px 4px;font-weight:500;border-bottom:1px solid #eef2f5">Teambuilding</a>
+      <a href="kontakt/" class="btn-orange" style="margin-top:10px;text-align:center;background:#f39209;color:#fff;font-weight:600;padding:12px;border-radius:2px">Kontakt aufnehmen</a>
+    </div>
   </nav>
 
   <main style="flex:1">
 
-  <!-- ==================================================== -->
-  <!-- ===================== HOME ========================= -->
-  <!-- ==================================================== -->
-  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-  <div>
-
-    <!-- HERO : Blueprint -->
-    <section style="position:relative;overflow:hidden;background:#fbfcfd;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:40px 40px;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:80px 32px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:center">
-        <div style="animation:fadeUp .6s ease both">
-          <div style="display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:26px">
-            <span style="width:26px;height:1px;background:#005c9f"></span>3D-Druck · Bern
-          </div>
-          <h1 style="font-size:clamp(38px,5.4vw,66px);font-weight:600;line-height:1.02;letter-spacing:-0.03em;color:#0f1720">Vom Modell<br>zum fertigen<br>Objekt.</h1>
-          <p style="margin-top:26px;max-width:440px;font-size:18px;color:#4a5763;line-height:1.6">3DAS druckt deine Serien, bringt 3D-Druck ins Klassenzimmer und macht ihn zum Teamerlebnis. Präzise, lokal und aus Bern.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
-            <a role="button" onClick="{{ goKontakt }}" style="display:inline-flex;align-items:center;gap:10px;background:#005c9f;color:#fff;font-weight:600;padding:15px 26px;border-radius:2px" style-hover="background:#00456f">Projekt anfragen →</a>
-            <a role="button" onClick="{{ goBatch }}" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0f1720;font-weight:600;padding:15px 26px;border-radius:2px;border:1px solid #d5dce2" style-hover="border-color:#005c9f">Angebote ansehen</a>
-          </div>
+  <!-- HERO : Blueprint -->
+  <section style="position:relative;overflow:hidden;background:#fbfcfd;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:40px 40px;border-bottom:1px solid #e3e8ec">
+    <div style="max-width:1200px;margin:0 auto;padding:80px 32px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:center">
+      <div style="animation:fadeUp .6s ease both">
+        <div style="display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:26px">
+          <span style="width:26px;height:1px;background:#005c9f"></span>3D-Druck · Bern
         </div>
-        <div style="justify-self:center;display:flex;flex-direction:column-reverse;align-items:center;gap:4px;padding:30px;filter:drop-shadow(0 24px 40px rgba(15,23,32,.10))">
-          <sc-for list="{{ layers }}" as="ly" hint-placeholder-count="18">
-            <div style="height:9px;width:{{ ly.w }};background:{{ ly.c }};border-radius:2px"></div>
-          </sc-for>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a97a2;letter-spacing:.1em;margin-bottom:14px">LAYER 0.20&#8202;mm</div>
+        <h1 style="font-size:clamp(38px,5.4vw,66px);font-weight:600;line-height:1.02;letter-spacing:-0.03em;color:#0f1720">Vom Modell<br>zum fertigen<br>Objekt.</h1>
+        <p style="margin-top:26px;max-width:440px;font-size:18px;color:#4a5763;line-height:1.6">3DAS druckt deine Serien, bringt 3D-Druck ins Klassenzimmer und macht ihn zum Teamerlebnis. Präzise, lokal und aus Bern.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
+          <a href="kontakt/" class="btn-blue" style="display:inline-flex;align-items:center;gap:10px;background:#005c9f;color:#fff;font-weight:600;padding:15px 26px;border-radius:2px">Projekt anfragen →</a>
+          <a href="batch-druck/" class="btn-outline" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0f1720;font-weight:600;padding:15px 26px;border-radius:2px;border:1px solid #d5dce2">Angebote ansehen</a>
         </div>
       </div>
-    </section>
-
-    <!-- spec bar -->
-    <section style="background:#0f1720;color:#fff">
-      <div style="max-width:1200px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;gap:14px 48px;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#c3ccd4">
-        <span><span style="color:#f39209">●</span>&nbsp; Standort Bern — Werkhof Egelsee</span>
-        <span><span style="color:#f39209">●</span>&nbsp; Einzelstück bis Kleinserie</span>
-        <span><span style="color:#f39209">●</span>&nbsp; Workshops ab Primarstufe</span>
-        <span><span style="color:#f39209">●</span>&nbsp; Team-Events auf Anfrage</span>
+      <div style="justify-self:center;display:flex;flex-direction:column-reverse;align-items:center;gap:4px;padding:30px;filter:drop-shadow(0 24px 40px rgba(15,23,32,.10))">
+        <div style="height:9px;width:92px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:116px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:138px;background:#0a67a8;border-radius:2px"></div>
+        <div style="height:9px;width:154px;background:#0a67a8;border-radius:2px"></div>
+        <div style="height:9px;width:166px;background:#f39209;border-radius:2px"></div>
+        <div style="height:9px;width:170px;background:#f39209;border-radius:2px"></div>
+        <div style="height:9px;width:168px;background:#0a67a8;border-radius:2px"></div>
+        <div style="height:9px;width:158px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:146px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:134px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:128px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:132px;background:#0a67a8;border-radius:2px"></div>
+        <div style="height:9px;width:146px;background:#f39209;border-radius:2px"></div>
+        <div style="height:9px;width:160px;background:#f39209;border-radius:2px"></div>
+        <div style="height:9px;width:172px;background:#0a67a8;border-radius:2px"></div>
+        <div style="height:9px;width:176px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:168px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:150px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:120px;background:#005c9f;border-radius:2px"></div>
+        <div style="height:9px;width:86px;background:#005c9f;border-radius:2px"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a97a2;letter-spacing:.1em;margin-bottom:14px">LAYER 0.20&#8202;mm</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- offerings -->
-    <section style="max-width:1200px;margin:0 auto;padding:96px 32px">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Unsere Angebote</div>
-          <h2 style="font-size:clamp(30px,4vw,46px);font-weight:600;letter-spacing:-0.02em;line-height:1.05">Drei Wege zum 3D-Druck.</h2>
-        </div>
-        <p style="max-width:320px;color:#5a6672;font-size:15px">Ob Produktion, Bildung oder Erlebnis — wähle, was zu dir passt.</p>
+  <!-- spec bar -->
+  <section style="background:#0f1720;color:#fff">
+    <div style="max-width:1200px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;gap:14px 48px;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#c3ccd4">
+      <span><span style="color:#f39209">●</span>&nbsp; Standort Bern — Werkhof Egelsee</span>
+      <span><span style="color:#f39209">●</span>&nbsp; Einzelstück bis Kleinserie</span>
+      <span><span style="color:#f39209">●</span>&nbsp; Workshops ab Primarstufe</span>
+      <span><span style="color:#f39209">●</span>&nbsp; Team-Events auf Anfrage</span>
+    </div>
+  </section>
+
+  <!-- offerings -->
+  <section style="max-width:1200px;margin:0 auto;padding:96px 32px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Unsere Angebote</div>
+        <h2 style="font-size:clamp(30px,4vw,46px);font-weight:600;letter-spacing:-0.02em;line-height:1.05">Drei Wege zum 3D-Druck.</h2>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
-        <a role="button" onClick="{{ goBatch }}" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;cursor:pointer;transition:.2s" style-hover="border-color:#005c9f;transform:translateY(-4px)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[01]</div>
-          <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Batch-Druck</h3>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Serien und Kleinserien in gleichbleibender Qualität — von einem Teil bis zu hunderten.</p>
-          <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
-        </a>
-        <a role="button" onClick="{{ goWorkshops }}" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;cursor:pointer;transition:.2s" style-hover="border-color:#005c9f;transform:translateY(-4px)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[02]</div>
-          <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Schulklassen</h3>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Intro ins 3D-Drucken für Schulklassen. Von der Idee bis zum ersten selbst gedruckten Objekt.</p>
-          <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
-        </a>
-        <a role="button" onClick="{{ goTeam }}" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;cursor:pointer;transition:.2s" style-hover="border-color:#005c9f;transform:translateY(-4px)">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[03]</div>
-          <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Teambuilding</h3>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Ein Team-Event, bei dem alle 3D-Druck verstehen — und ihr erstes eigenes Teil mit nach Hause nehmen.</p>
-          <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
-        </a>
+      <p style="max-width:320px;color:#5a6672;font-size:15px">Ob Produktion, Bildung oder Erlebnis — wähle, was zu dir passt.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+      <a href="batch-druck/" class="card" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;transition:.2s">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[01]</div>
+        <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Batch-Druck</h3>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">Serien und Kleinserien in gleichbleibender Qualität — von einem Teil bis zu hunderten.</p>
+        <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
+      </a>
+      <a href="schulklassen/" class="card" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;transition:.2s">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[02]</div>
+        <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Schulklassen</h3>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">Intro ins 3D-Drucken für Schulklassen. Von der Idee bis zum ersten selbst gedruckten Objekt.</p>
+        <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
+      </a>
+      <a href="teambuilding/" class="card" style="display:block;background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:34px 30px;transition:.2s">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:22px">[03]</div>
+        <h3 style="font-size:23px;font-weight:600;margin-bottom:10px">Teambuilding</h3>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">Ein Team-Event, bei dem alle 3D-Druck verstehen — und ihr erstes eigenes Teil mit nach Hause nehmen.</p>
+        <div style="margin-top:22px;font-weight:600;color:#005c9f;font-size:14px">Mehr erfahren →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- why -->
+  <section style="background:#f5f7f9;border-top:1px solid #e3e8ec;border-bottom:1px solid #e3e8ec">
+    <div style="max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Warum 3DAS</div>
+        <h2 style="font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-0.02em;line-height:1.1;max-width:260px">Technik, die man versteht.</h2>
       </div>
-    </section>
-
-    <!-- why -->
-    <section style="background:#f5f7f9;border-top:1px solid #e3e8ec;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Warum 3DAS</div>
-          <h2 style="font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-0.02em;line-height:1.1;max-width:260px">Technik, die man versteht.</h2>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:18px">
-          <div style="font-weight:600;margin-bottom:8px">Lokal in Bern</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Kurze Wege, persönlicher Kontakt und Abholung direkt im Werkhof Egelsee.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:18px">
-          <div style="font-weight:600;margin-bottom:8px">Präzise &amp; wiederholbar</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Kalibrierte Prozesse für saubere Ergebnisse — vom Prototyp bis zur Serie.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:18px">
-          <div style="font-weight:600;margin-bottom:8px">Wissen zum Mitnehmen</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">In Workshops und Events erklären wir 3D-Druck so, dass ihn wirklich alle verstehen.</p>
-        </div>
+      <div style="border-top:2px solid #0f1720;padding-top:18px">
+        <div style="font-weight:600;margin-bottom:8px">Lokal in Bern</div>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">Kurze Wege, persönlicher Kontakt und Abholung direkt im Werkhof Egelsee.</p>
       </div>
-    </section>
-
-    <!-- cta -->
-    <section style="max-width:1200px;margin:0 auto;padding:96px 32px">
-      <div style="background:#005c9f;border-radius:6px;padding:64px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
-        <div>
-          <h2 style="font-size:clamp(28px,3.4vw,42px);font-weight:600;letter-spacing:-0.02em;color:#fff;line-height:1.08">Bereit für dein<br>Projekt?</h2>
-          <p style="color:#bcd3e4;margin-top:14px;font-size:16px;max-width:380px">Schreib uns kurz, worum es geht — wir melden uns mit dem passenden Angebot.</p>
-        </div>
-        <a role="button" onClick="{{ goKontakt }}" style="display:inline-flex;align-items:center;gap:10px;background:#f39209;color:#fff;font-weight:600;padding:16px 30px;border-radius:2px;font-size:16px" style-hover="background:#d97f06">Kontakt aufnehmen →</a>
+      <div style="border-top:2px solid #0f1720;padding-top:18px">
+        <div style="font-weight:600;margin-bottom:8px">Präzise &amp; wiederholbar</div>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">Kalibrierte Prozesse für saubere Ergebnisse — vom Prototyp bis zur Serie.</p>
       </div>
-    </section>
-
-  </div>
-  </sc-if>
-
-  <!-- ==================================================== -->
-  <!-- ================== BATCH-DRUCK ===================== -->
-  <!-- ==================================================== -->
-  <sc-if value="{{ isBatch }}" hint-placeholder-val="{{ false }}">
-  <div>
-    <section style="background:#fbfcfd;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:40px 40px;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:64px 32px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:center">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:22px">[01] Batch-Druck</div>
-          <h1 style="font-size:clamp(34px,5vw,58px);font-weight:600;letter-spacing:-0.03em;line-height:1.03;max-width:560px">Serien und Kleinserien, sauber produziert.</h1>
-          <p style="margin-top:22px;max-width:520px;font-size:18px;color:#4a5763;line-height:1.6">Du brauchst dasselbe Teil mehrfach oder willst deine Idee zuerst als Produktprototyp testen? Wir übernehmen die Produktion — vom Prototyp über das einzelne Ersatzteil bis zur wiederkehrenden Kleinserie, in gleichbleibender Qualität.</p>
-          <a role="button" onClick="{{ goKontaktBatch }}" style="display:inline-flex;margin-top:32px;align-items:center;gap:10px;background:#f39209;color:#fff;font-weight:600;padding:15px 26px;border-radius:2px" style-hover="background:#d97f06">Batch anfragen →</a>
-        </div>
-        <div style="justify-self:center;padding:20px;filter:drop-shadow(0 24px 40px rgba(15,23,32,.10))">
-          <div style="position:relative;padding:20px;background:#fbfcfd;border:1.5px solid #cdd8e0;border-radius:8px;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:22px 22px">
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-              <sc-for list="{{ plateParts }}" as="pt" hint-placeholder-count="12">
-                <div style="width:44px;height:44px;border-radius:9px;background:{{ pt.c }};display:flex;align-items:center;justify-content:center">
-                  <div style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.4)"></div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-          <div style="text-align:center;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a97a2;letter-spacing:.1em">1 DRUCK · 12 IDENTISCHE TEILE</div>
-        </div>
+      <div style="border-top:2px solid #0f1720;padding-top:18px">
+        <div style="font-weight:600;margin-bottom:8px">Wissen zum Mitnehmen</div>
+        <p style="color:#5a6672;font-size:15px;line-height:1.6">In Workshops und Events erklären wir 3D-Druck so, dass ihn wirklich alle verstehen.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section style="max-width:1200px;margin:0 auto;padding:88px 32px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px">
-        <div style="border-top:2px solid #0f1720;padding-top:20px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#f39209;margin-bottom:14px">01 / Menge</div>
-          <div style="font-weight:600;font-size:19px;margin-bottom:8px">1 bis mehrere hundert Teile</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Skalierbar von der Einzelanfertigung bis zur Serie — du zahlst nur, was du brauchst.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:20px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#f39209;margin-bottom:14px">02 / Material</div>
-          <div style="font-weight:600;font-size:19px;margin-bottom:8px">PLA · PETG · ASA · TPU</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Robuste Standardmaterialien in vielen Farben. Spezialwünsche? Frag uns einfach.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:20px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#f39209;margin-bottom:14px">03 / Datei</div>
-          <div style="font-weight:600;font-size:19px;margin-bottom:8px">STL · STEP · 3MF</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Schick uns dein Modell. Kein Modell? Wir helfen bei der Aufbereitung weiter.</p>
-        </div>
+  <!-- cta -->
+  <section style="max-width:1200px;margin:0 auto;padding:96px 32px">
+    <div style="background:#005c9f;border-radius:6px;padding:64px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
+      <div>
+        <h2 style="font-size:clamp(28px,3.4vw,42px);font-weight:600;letter-spacing:-0.02em;color:#fff;line-height:1.08">Bereit für dein<br>Projekt?</h2>
+        <p style="color:#bcd3e4;margin-top:14px;font-size:16px;max-width:380px">Schreib uns kurz, worum es geht — wir melden uns mit dem passenden Angebot.</p>
       </div>
-    </section>
-
-    <section style="background:#f5f7f9;border-top:1px solid #e3e8ec;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:80px 32px">
-        <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:600;letter-spacing:-0.02em;margin-bottom:44px">So läuft ein Auftrag ab</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:26px">
-          <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">01</div>
-            <div style="font-weight:600;margin:10px 0 6px">Anfrage &amp; Datei</div>
-            <p style="color:#5a6672;font-size:15px;line-height:1.6">Du schickst uns dein Modell und die gewünschte Stückzahl.</p>
-          </div>
-          <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">02</div>
-            <div style="font-weight:600;margin:10px 0 6px">Offerte</div>
-            <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir prüfen die Druckbarkeit und senden dir einen transparenten Preis.</p>
-          </div>
-          <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">03</div>
-            <div style="font-weight:600;margin:10px 0 6px">Produktion</div>
-            <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir drucken deine Serie mit kalibrierten, überwachten Prozessen.</p>
-          </div>
-          <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">04</div>
-            <div style="font-weight:600;margin:10px 0 6px">Abholung / Versand</div>
-            <p style="color:#5a6672;font-size:15px;line-height:1.6">Abholung in Bern oder Versand direkt zu dir.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section style="max-width:1200px;margin:0 auto;padding:80px 32px;text-align:center">
-      <h2 style="font-size:clamp(26px,3.2vw,40px);font-weight:600;letter-spacing:-0.02em">Teil im Kopf? Lass es uns drucken.</h2>
-      <a role="button" onClick="{{ goKontaktBatch }}" style="display:inline-flex;margin-top:26px;align-items:center;gap:10px;background:#005c9f;color:#fff;font-weight:600;padding:15px 30px;border-radius:2px" style-hover="background:#00456f">Jetzt anfragen →</a>
-    </section>
-  </div>
-  </sc-if>
-
-  <!-- ==================================================== -->
-  <!-- =================== WORKSHOPS ====================== -->
-  <!-- ==================================================== -->
-  <sc-if value="{{ isWorkshop }}" hint-placeholder-val="{{ false }}">
-  <div>
-    <section style="background:#fbfcfd;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:40px 40px;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:64px 32px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:center">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:22px">[02] Schulklassen</div>
-          <h1 style="font-size:clamp(34px,5vw,58px);font-weight:600;letter-spacing:-0.03em;line-height:1.03;max-width:560px">3D-Druck fürs Klassenzimmer.</h1>
-          <p style="margin-top:22px;max-width:520px;font-size:18px;color:#4a5763;line-height:1.6">Ein praxisnaher Einstieg ins 3D-Drucken für Schulklassen. Die Kinder entwerfen, slicen und drucken — und halten am Ende ihr erstes eigenes Objekt in der Hand.</p>
-          <a role="button" onClick="{{ goKontaktWorkshop }}" style="display:inline-flex;margin-top:32px;align-items:center;gap:10px;background:#f39209;color:#fff;font-weight:600;padding:15px 26px;border-radius:2px" style-hover="background:#d97f06">Workshop anfragen →</a>
-        </div>
-        <div style="justify-self:center;padding:20px 30px;filter:drop-shadow(0 24px 40px rgba(15,23,32,.10))">
-          <div style="position:relative;width:212px;height:198px;margin:0 auto">
-            <!-- printer frame -->
-            <div style="position:absolute;inset:0;border:5px solid #005c9f;border-bottom:none;border-radius:9px 9px 0 0"></div>
-            <!-- X gantry -->
-            <div style="position:absolute;top:58px;left:5px;right:5px;height:7px;background:#0a67a8;border-radius:2px"></div>
-            <!-- print head + nozzle -->
-            <div style="position:absolute;top:62px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center">
-              <div style="width:24px;height:15px;background:#f39209;border-radius:2px"></div>
-              <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:11px solid #f39209"></div>
-            </div>
-            <!-- object being printed -->
-            <div style="position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px">
-              <sc-for list="{{ printerObj }}" as="ly" hint-placeholder-count="5">
-                <div style="height:7px;width:{{ ly.w }};background:{{ ly.c }};border-radius:2px"></div>
-              </sc-for>
-            </div>
-            <!-- print bed -->
-            <div style="position:absolute;bottom:26px;left:22px;right:22px;height:7px;background:#005c9f;border-radius:2px"></div>
-            <!-- feet -->
-            <div style="position:absolute;bottom:0;left:16px;width:22px;height:9px;background:#005c9f;border-radius:2px"></div>
-            <div style="position:absolute;bottom:0;right:16px;width:22px;height:9px;background:#005c9f;border-radius:2px"></div>
-          </div>
-          <div style="text-align:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a97a2;letter-spacing:.1em">SCHICHT FÜR SCHICHT</div>
-        </div>
-      </div>
-    </section>
-
-    <section style="max-width:1200px;margin:0 auto;padding:88px 32px">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:40px">— Was die Kinder lernen</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:22px">
-        <div style="background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:30px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:18px">[01]</div>
-          <div style="font-weight:600;font-size:18px;margin-bottom:8px">Wie 3D-Druck funktioniert</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Schicht für Schicht — verständlich erklärt und live am Drucker gezeigt.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:30px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:18px">[02]</div>
-          <div style="font-weight:600;font-size:18px;margin-bottom:8px">Eigene Idee entwerfen</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Mit kindgerechten Tools gestalten die Schüler:innen ihr eigenes Modell.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #e3e8ec;border-radius:4px;padding:30px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f39209;margin-bottom:18px">[03]</div>
-          <div style="font-weight:600;font-size:18px;margin-bottom:8px">Selbst drucken</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Jedes Kind nimmt sein fertig gedrucktes Objekt mit nach Hause.</p>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:#f5f7f9;border-top:1px solid #e3e8ec;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:34px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Format</div>
-          <h2 style="font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-0.02em;max-width:240px">Passt in den Schulalltag.</h2>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Ab Primarstufe</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Inhalte, die wir an die Altersstufe der Klasse anpassen.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Halb- oder Ganztag</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Flexible Dauer — abgestimmt auf Stundenplan und Ziele.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Wir bringen die Drucker mit</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Der Workshop findet direkt bei euch an der Schule statt.</p>
-        </div>
-      </div>
-    </section>
-
-    <section style="max-width:1200px;margin:0 auto;padding:80px 32px;text-align:center">
-      <h2 style="font-size:clamp(26px,3.2vw,40px);font-weight:600;letter-spacing:-0.02em">Workshop für deine Klasse planen?</h2>
-      <a role="button" onClick="{{ goKontaktWorkshop }}" style="display:inline-flex;margin-top:26px;align-items:center;gap:10px;background:#005c9f;color:#fff;font-weight:600;padding:15px 30px;border-radius:2px" style-hover="background:#00456f">Jetzt anfragen →</a>
-    </section>
-  </div>
-  </sc-if>
-
-  <!-- ==================================================== -->
-  <!-- ================== TEAMBUILDING ==================== -->
-  <!-- ==================================================== -->
-  <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
-  <div>
-    <section style="background:#fbfcfd;background-image:linear-gradient(#e9eef2 1px,transparent 1px),linear-gradient(90deg,#e9eef2 1px,transparent 1px);background-size:40px 40px;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:64px 32px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:center">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:22px">[03] Teambuilding</div>
-          <h1 style="font-size:clamp(34px,5vw,58px);font-weight:600;letter-spacing:-0.03em;line-height:1.03;max-width:560px">Ein Event, das etwas Bleibendes druckt.</h1>
-          <p style="margin-top:22px;max-width:520px;font-size:18px;color:#4a5763;line-height:1.6">Euer Team lernt 3D-Druck von Grund auf kennen — und druckt gemeinsam das erste eigene Teil. Ein Erlebnis, das erklärt, verbindet und ein Andenken mit nach Hause gibt.</p>
-          <a role="button" onClick="{{ goKontaktTeam }}" style="display:inline-flex;margin-top:32px;align-items:center;gap:10px;background:#f39209;color:#fff;font-weight:600;padding:15px 26px;border-radius:2px" style-hover="background:#d97f06">Event anfragen →</a>
-        </div>
-        <div style="justify-self:center;padding:20px 30px;filter:drop-shadow(0 24px 40px rgba(15,23,32,.10))">
-          <div style="display:flex;align-items:flex-end;justify-content:center;gap:16px;border-bottom:2px solid #cdd8e0;padding-bottom:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-              <div style="width:20px;height:20px;border-radius:50%;background:#005c9f"></div>
-              <div style="width:26px;height:42px;background:#005c9f;border-radius:10px 10px 3px 3px"></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-              <div style="width:20px;height:20px;border-radius:50%;background:#005c9f"></div>
-              <div style="width:26px;height:48px;background:#005c9f;border-radius:10px 10px 3px 3px"></div>
-            </div>
-            <div style="display:flex;align-items:flex-end;gap:6px">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-                <div style="width:20px;height:20px;border-radius:50%;background:#005c9f"></div>
-                <div style="width:26px;height:44px;background:#005c9f;border-radius:10px 10px 3px 3px"></div>
-              </div>
-              <div style="width:18px;height:18px;background:#f39209;border-radius:4px;margin-bottom:18px"></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-              <div style="width:20px;height:20px;border-radius:50%;background:#005c9f"></div>
-              <div style="width:26px;height:46px;background:#005c9f;border-radius:10px 10px 3px 3px"></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-              <div style="width:20px;height:20px;border-radius:50%;background:#005c9f"></div>
-              <div style="width:26px;height:40px;background:#005c9f;border-radius:10px 10px 3px 3px"></div>
-            </div>
-          </div>
-          <div style="text-align:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a97a2;letter-spacing:.1em">EUER TEAM · GEMEINSAM DRUCKEN</div>
-        </div>
-      </div>
-    </section>
-
-    <section style="max-width:1200px;margin:0 auto;padding:88px 32px">
-      <h2 style="font-size:clamp(26px,3.2vw,38px);font-weight:600;letter-spacing:-0.02em;margin-bottom:44px">Der Ablauf</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:26px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">01</div>
-          <div style="font-weight:600;margin:10px 0 6px">Einstieg</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir zeigen, wie 3D-Druck funktioniert — ohne Fachchinesisch.</p>
-        </div>
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">02</div>
-          <div style="font-weight:600;margin:10px 0 6px">Gestalten</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">In kleinen Gruppen entwerft ihr euer eigenes Objekt.</p>
-        </div>
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">03</div>
-          <div style="font-weight:600;margin:10px 0 6px">Drucken</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Live seht ihr, wie eure Idee Schicht für Schicht entsteht.</p>
-        </div>
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:#005c9f;font-weight:500">04</div>
-          <div style="font-weight:600;margin:10px 0 6px">Mitnehmen</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Jede:r geht mit einem selbst gedruckten Teil nach Hause.</p>
-        </div>
-      </div>
-    </section>
-
-    <section style="background:#f5f7f9;border-top:1px solid #e3e8ec;border-bottom:1px solid #e3e8ec">
-      <div style="max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:34px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:14px">— Format</div>
-          <h2 style="font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-0.02em;max-width:240px">Für Teams jeder Grösse.</h2>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Kleine &amp; grosse Gruppen</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir skalieren das Event auf eure Teamgrösse.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Bei euch oder in Bern</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir kommen zu euch oder empfangen euch im Werkhof Egelsee.</p>
-        </div>
-        <div style="border-top:2px solid #0f1720;padding-top:16px">
-          <div style="font-weight:600;margin-bottom:6px">Kein Vorwissen nötig</div>
-          <p style="color:#5a6672;font-size:15px;line-height:1.6">Alle machen mit — vom Neuling bis zum Technik-Fan.</p>
-        </div>
-      </div>
-    </section>
-
-    <section style="max-width:1200px;margin:0 auto;padding:80px 32px;text-align:center">
-      <h2 style="font-size:clamp(26px,3.2vw,40px);font-weight:600;letter-spacing:-0.02em">Bringt euer Team zum Drucken.</h2>
-      <a role="button" onClick="{{ goKontaktTeam }}" style="display:inline-flex;margin-top:26px;align-items:center;gap:10px;background:#005c9f;color:#fff;font-weight:600;padding:15px 30px;border-radius:2px" style-hover="background:#00456f">Jetzt anfragen →</a>
-    </section>
-  </div>
-  </sc-if>
-
-  <!-- ==================================================== -->
-  <!-- ==================== KONTAKT ======================= -->
-  <!-- ==================================================== -->
-  <sc-if value="{{ isKontakt }}" hint-placeholder-val="{{ false }}">
-  <div>
-    <section style="max-width:1200px;margin:0 auto;padding:64px 32px 96px">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#005c9f;margin-bottom:22px">— Kontakt</div>
-      <h1 style="font-size:clamp(34px,5vw,58px);font-weight:600;letter-spacing:-0.03em;line-height:1.03;max-width:640px">Lass uns über dein Projekt sprechen.</h1>
-      <p style="margin-top:20px;max-width:520px;font-size:18px;color:#4a5763;line-height:1.6">Erzähl uns kurz, was du vorhast — wir melden uns mit dem passenden Angebot.</p>
-
-      <div style="margin-top:52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px;align-items:start">
-        <!-- form -->
-        <div>
-          <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-            <div style="border:1px solid #005c9f;background:#f2f8fc;border-radius:4px;padding:40px 34px">
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:#005c9f;margin-bottom:14px">✓ GESENDET</div>
-              <h3 style="font-size:24px;font-weight:600;margin-bottom:10px">Danke für deine Anfrage!</h3>
-              <p style="color:#5a6672;font-size:15px;line-height:1.6">Wir haben deine Nachricht erhalten und melden uns so schnell wie möglich bei dir.</p>
-              <button onClick="{{ resetForm }}" style="margin-top:24px;background:#fff;border:1px solid #d5dce2;padding:12px 22px;border-radius:2px;font-weight:600;font-size:14px" style-hover="border-color:#005c9f">Weitere Anfrage senden</button>
-            </div>
-          </sc-if>
-          <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
-            <form onSubmit="{{ submitForm }}" style="display:flex;flex-direction:column;gap:20px">
-              <div>
-                <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6672;margin-bottom:8px">Name *</label>
-                <input required value="{{ fName }}" onChange="{{ onName }}" placeholder="Dein Name" style="width:100%;border:1px solid #d5dce2;border-radius:2px;padding:13px 14px;font-size:15px;background:#fff;outline:none" style-focus="border-color:#005c9f">
-              </div>
-              <div>
-                <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6672;margin-bottom:8px">E-Mail *</label>
-                <input required type="email" value="{{ fEmail }}" onChange="{{ onEmail }}" placeholder="name@beispiel.ch" style="width:100%;border:1px solid #d5dce2;border-radius:2px;padding:13px 14px;font-size:15px;background:#fff;outline:none" style-focus="border-color:#005c9f">
-              </div>
-              <div>
-                <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6672;margin-bottom:8px">Firma / Schule</label>
-                <input value="{{ fOrg }}" onChange="{{ onOrg }}" placeholder="Optional" style="width:100%;border:1px solid #d5dce2;border-radius:2px;padding:13px 14px;font-size:15px;background:#fff;outline:none" style-focus="border-color:#005c9f">
-              </div>
-              <div>
-                <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6672;margin-bottom:8px">Interessiertes Angebot</label>
-                <select value="{{ fAngebot }}" onChange="{{ onAngebot }}" style="width:100%;border:1px solid #d5dce2;border-radius:2px;padding:13px 14px;font-size:15px;background:#fff;outline:none;color:#0f1720" style-focus="border-color:#005c9f">
-                  <option value="">Bitte wählen …</option>
-                  <option value="batch">Batch-Druck</option>
-                  <option value="workshop">Workshop (Schule)</option>
-                  <option value="team">Teambuilding-Event</option>
-                  <option value="allgemein">Allgemeine Anfrage</option>
-                </select>
-              </div>
-              <div>
-                <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#5a6672;margin-bottom:8px">Nachricht *</label>
-                <textarea required rows="5" value="{{ fMsg }}" onChange="{{ onMsg }}" placeholder="Worum geht es?" style="width:100%;border:1px solid #d5dce2;border-radius:2px;padding:13px 14px;font-size:15px;background:#fff;outline:none;resize:vertical" style-focus="border-color:#005c9f"></textarea>
-              </div>
-              <button type="submit" style="align-self:flex-start;background:#f39209;color:#fff;border:none;font-weight:600;font-size:16px;padding:15px 30px;border-radius:2px" style-hover="background:#d97f06">Anfrage senden →</button>
-            </form>
-          </sc-if>
-        </div>
-
-        <!-- contact info -->
-        <div style="background:#0f1720;color:#fff;border-radius:4px;padding:40px 34px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f39209;margin-bottom:26px">Standort</div>
-          <div style="font-size:19px;font-weight:600;line-height:1.5">3DAS<br>Werkhof Egelsee<br>Muristrasse 21E<br>3006 Bern</div>
-          <div style="height:1px;background:rgba(255,255,255,.12);margin:30px 0"></div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#b9c3cc;line-height:2">
-            <div><span style="color:#8a97a2">Region&nbsp;</span> Bern &amp; Umgebung</div>
-          </div>
-          <a href="https://maps.app.goo.gl/93qXg5McwJYiKjs98" target="_blank" rel="noopener noreferrer"><img src="assets/map.png" alt="Standort Bern 3006" style="margin-top:30px;width:100%;height:150px;object-fit:cover;border-radius:3px;display:block"></a>
-        </div>
-      </div>
-    </section>
-  </div>
-  </sc-if>
+      <a href="kontakt/" class="btn-orange" style="display:inline-flex;align-items:center;gap:10px;background:#f39209;color:#fff;font-weight:600;padding:16px 30px;border-radius:2px;font-size:16px">Kontakt aufnehmen →</a>
+    </div>
+  </section>
 
   </main>
 
@@ -506,15 +212,15 @@
   <footer style="background:#00304d;color:#fff">
     <div style="max-width:1200px;margin:0 auto;padding:56px 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:34px">
       <div>
-        <img src="assets/logo-footer.svg" alt="3DAS" style="height:24px;width:auto;display:block;margin-bottom:18px">
+        <img src="assets/logo-footer.svg" alt="3DAS" width="142" height="24" style="height:24px;width:auto;aspect-ratio:320/54.2;display:block;margin-bottom:18px">
         <p style="color:#a9bdcb;font-size:14px;line-height:1.7;max-width:240px">3D-Druck, Workshops und Team-Events aus Bern.</p>
       </div>
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f8698;margin-bottom:16px">Angebote</div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#cdd9e2">
-          <a role="button" onClick="{{ goBatch }}" style="cursor:pointer" style-hover="color:#f39209">Batch-Druck</a>
-          <a role="button" onClick="{{ goWorkshops }}" style="cursor:pointer" style-hover="color:#f39209">Schulklassen</a>
-          <a role="button" onClick="{{ goTeam }}" style="cursor:pointer" style-hover="color:#f39209">Teambuilding</a>
+          <a href="batch-druck/" class="footer-link">Batch-Druck</a>
+          <a href="schulklassen/" class="footer-link">Schulklassen</a>
+          <a href="teambuilding/" class="footer-link">Teambuilding</a>
         </div>
       </div>
       <div>
@@ -522,7 +228,7 @@
         <div style="font-size:14px;color:#cdd9e2;line-height:1.8">Werkhof Egelsee<br>Muristrasse 21E<br>3006 Bern</div>
       </div>
       <div style="display:flex;align-items:flex-start">
-        <a role="button" onClick="{{ goKontakt }}" style="display:inline-flex;align-items:center;gap:8px;background:#f39209;color:#fff;font-weight:600;padding:13px 22px;border-radius:2px;font-size:14px" style-hover="background:#d97f06">Anfrage senden →</a>
+        <a href="kontakt/" class="btn-orange" style="display:inline-flex;align-items:center;gap:8px;background:#f39209;color:#fff;font-weight:600;padding:13px 22px;border-radius:2px;font-size:14px">Anfrage senden →</a>
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,.1)">
@@ -534,90 +240,16 @@
   </footer>
 
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
-class Component extends DCLogic {
-  state = {
-    page: 'start',
-    dir: 'a',
-    menuOpen: false,
-    submitted: false,
-    form: { name:'', email:'', org:'', angebot:'', msg:'' }
-  };
 
-  go = (page, angebot) => {
-    this.setState(s => ({
-      page,
-      menuOpen: false,
-      submitted: false,
-      form: angebot ? { ...s.form, angebot } : s.form
-    }));
-    if (typeof window !== 'undefined') window.scrollTo(0, 0);
-  };
-
-  setField = (key) => (e) => {
-    const v = e.target.value;
-    this.setState(s => ({ form: { ...s.form, [key]: v } }));
-  };
-
-  renderVals() {
-    const p = this.state.page;
-    const f = this.state.form;
-    // build-plate parts (top-down) for the batch graphic
-    const plateParts = [
-      '#0a67a8','#0a67a8','#f39209','#0a67a8',
-      '#0a67a8','#f39209','#0a67a8','#0a67a8',
-      '#0a67a8','#0a67a8','#f39209','#0a67a8'
-    ].map(c => ({ c }));
-    // object on the printer bed (top layer freshly extruded)
-    const printerObj = [
-      {w:'22px',c:'#f39209'},{w:'34px',c:'#0a67a8'},{w:'42px',c:'#005c9f'},{w:'40px',c:'#005c9f'},{w:'30px',c:'#005c9f'}
-    ];
-    return {
-      plateParts,
-      printerObj,
-      isHome: p === 'start',
-      isBatch: p === 'batch',
-      isWorkshop: p === 'workshop',
-      isTeam: p === 'team',
-      isKontakt: p === 'kontakt',
-
-      menuOpen: this.state.menuOpen,
-      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
-
-      goStart: () => this.go('start'),
-      goBatch: () => this.go('batch'),
-      goWorkshops: () => this.go('workshop'),
-      goTeam: () => this.go('team'),
-      goKontakt: () => this.go('kontakt'),
-      goKontaktBatch: () => this.go('kontakt', 'batch'),
-      goKontaktWorkshop: () => this.go('kontakt', 'workshop'),
-      goKontaktTeam: () => this.go('kontakt', 'team'),
-
-      submitted: this.state.submitted,
-      notSubmitted: !this.state.submitted,
-      submitForm: (e) => { e.preventDefault(); this.setState({ submitted: true }); if (typeof window !== 'undefined') window.scrollTo(0,0); },
-      resetForm: () => this.setState({ submitted: false, form: { name:'', email:'', org:'', angebot:'', msg:'' } }),
-
-      fName: f.name, fEmail: f.email, fOrg: f.org, fAngebot: f.angebot, fMsg: f.msg,
-      onName: this.setField('name'),
-      onEmail: this.setField('email'),
-      onOrg: this.setField('org'),
-      onAngebot: this.setField('angebot'),
-      onMsg: this.setField('msg'),
-
-      layers: [
-        {w:'92px',c:'#005c9f'},{w:'116px',c:'#005c9f'},{w:'138px',c:'#0a67a8'},
-        {w:'154px',c:'#0a67a8'},{w:'166px',c:'#f39209'},{w:'170px',c:'#f39209'},
-        {w:'168px',c:'#0a67a8'},{w:'158px',c:'#005c9f'},{w:'146px',c:'#005c9f'},
-        {w:'134px',c:'#005c9f'},{w:'128px',c:'#005c9f'},{w:'132px',c:'#0a67a8'},
-        {w:'146px',c:'#f39209'},{w:'160px',c:'#f39209'},{w:'172px',c:'#0a67a8'},
-        {w:'176px',c:'#005c9f'},{w:'168px',c:'#005c9f'},{w:'150px',c:'#005c9f'},
-        {w:'120px',c:'#005c9f'},{w:'86px',c:'#005c9f'}
-      ]
-    };
-  }
-}
+<script>
+(function(){
+  var btn = document.getElementById('navbtn');
+  var menu = document.getElementById('mobilemenu');
+  btn.addEventListener('click', function(){
+    var isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
 </script>
 </body>
 </html>
